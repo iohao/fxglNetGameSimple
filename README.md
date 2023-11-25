@@ -18,6 +18,7 @@ FXGL + ioGame 网络游戏中的多人移动演示
 
 
 <BR>
+
 ## 其他说明
 
 为了尽可能简单，服务器了使用 [ioGame 网络编程框架](https://www.yuque.com/iohao/game)；
@@ -27,6 +28,7 @@ FXGL 与服务器通信使用了 [ioGame 提供的 SDK](https://www.yuque.com/io
 
 
 <BR>
+
 ## 游戏界面预览
 
 
