@@ -27,7 +27,7 @@ import com.iohao.game.action.skeleton.core.CmdInfo;
 import com.iohao.game.action.skeleton.core.exception.ActionErrorEnum;
 import com.iohao.game.action.skeleton.core.flow.FlowContext;
 import com.iohao.game.action.skeleton.core.flow.interal.StatActionInOut;
-import com.iohao.game.action.skeleton.core.flow.interal.ThreadMonitorInOut;
+//import com.iohao.game.action.skeleton.core.flow.interal.ThreadMonitorInOut;
 import com.iohao.game.action.skeleton.protocol.wrapper.WrapperKit;
 import com.iohao.game.bolt.broker.client.kit.UserIdSettingKit;
 import com.iohao.game.bolt.broker.core.client.BrokerClientHelper;
@@ -46,7 +46,7 @@ import java.util.*;
 @ActionController(MyCmd.cmd)
 public class GameAction {
     public static StatActionInOut.StatActionRegion statActionRegion;
-    public static ThreadMonitorInOut.ThreadMonitorRegion threadMonitorRegion;
+//    public static ThreadMonitorInOut.ThreadMonitorRegion threadMonitorRegion;
     static Faker faker = new Faker(Locale.CHINA);
     Map<Long, PlayerInfo> playerInfoMap = new NonBlockingHashMap<>();
     Set<Long> playerIdSet = new NonBlockingHashSet<>();
@@ -113,7 +113,7 @@ public class GameAction {
     public void printRegion() {
         statActionRegion.forEach((cmdInfo, statAction) -> log.info("{}", statAction));
 
-        log.info("\n{}", threadMonitorRegion);
+//        log.info("\n{}", threadMonitorRegion);
     }
 
 

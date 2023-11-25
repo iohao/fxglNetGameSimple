@@ -23,7 +23,7 @@ import com.iohao.game.action.skeleton.core.BarSkeletonBuilder;
 import com.iohao.game.action.skeleton.core.BarSkeletonBuilderParamConfig;
 import com.iohao.game.action.skeleton.core.flow.interal.DebugInOut;
 import com.iohao.game.action.skeleton.core.flow.interal.StatActionInOut;
-import com.iohao.game.action.skeleton.core.flow.interal.ThreadMonitorInOut;
+//import com.iohao.game.action.skeleton.core.flow.interal.ThreadMonitorInOut;
 import com.iohao.game.bolt.broker.client.AbstractBrokerClientStartup;
 import com.iohao.game.bolt.broker.core.client.BrokerClient;
 import com.iohao.game.bolt.broker.core.client.BrokerClientBuilder;
@@ -58,9 +58,9 @@ public class MyLogicServer extends AbstractBrokerClientStartup {
         builder.addInOut(statActionInOut);
         GameAction.statActionRegion = statActionInOut.getRegion();
 
-        ThreadMonitorInOut threadMonitorInOut = new ThreadMonitorInOut();
-        builder.addInOut(threadMonitorInOut);
-        GameAction.threadMonitorRegion = threadMonitorInOut.getRegion();
+//        ThreadMonitorInOut threadMonitorInOut = new ThreadMonitorInOut();
+//        builder.addInOut(threadMonitorInOut);
+//        GameAction.threadMonitorRegion = threadMonitorInOut.getRegion();
     }
 
     @Override
