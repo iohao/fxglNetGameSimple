@@ -97,21 +97,13 @@ public class MyKit {
         return fightPlayer;
     }
 
-    void removePlayer(long playerId) {
-        FightPlayer fightPlayer = entityMap.remove(playerId);
-        if (Objects.isNull(fightPlayer)) {
-            return;
-        }
-
-        fightPlayer.player.removeFromWorld();
-    }
-
     private void listenerNet() {
         ListenCommand.of(CmdKit.merge(MyCmd.cmd, MyCmd.joinRoom)).setTitle("joinRoom").setCallback(result -> {
 
             List<PlayerInfo> playerInfoList = result.listValue(PlayerInfo.class);
 
             execute(() -> {
+
                 playerInfoList.forEach(playerInfo -> {
                     // 有新玩家加入房间
                     FightPlayer fightPlayer = createPlayer(playerInfo);
@@ -123,6 +115,7 @@ public class MyKit {
                     }
 
                 });
+
             });
 
         }).listen();
@@ -142,23 +135,22 @@ public class MyKit {
             FightPlayer fightPlayer = entityMap.get(playerId);
             PlayerMoveComponent playerMoveComponent = fightPlayer.playerMoveComponent;
 
-            execute(() -> {
-                switch (dir) {
-                    case LEFT -> playerMoveComponent.left();
-                    case RIGHT -> playerMoveComponent.right();
-                    case UP -> playerMoveComponent.up();
-                    case DOWN -> playerMoveComponent.down();
-                }
-            });
+            switch (dir) {
+                case LEFT -> playerMoveComponent.left();
+                case RIGHT -> playerMoveComponent.right();
+                case UP -> playerMoveComponent.up();
+                case DOWN -> playerMoveComponent.down();
+            }
 
         }).listen();
 
         ListenCommand.of(CmdKit.merge(MyCmd.cmd, MyCmd.quitRoom)).setTitle("quitRoom").setCallback(result -> {
             var playerInfo = result.getValue(PlayerInfo.class);
 
-            execute(() -> {
-                removePlayer(playerInfo.id);
-            });
+            FightPlayer fightPlayer = entityMap.remove(playerInfo.id);
+            if (Objects.nonNull(fightPlayer)) {
+                fightPlayer.player.removeFromWorld();
+            }
 
         }).listen();
 
